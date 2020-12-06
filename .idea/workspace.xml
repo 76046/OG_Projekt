@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e6e4526e-58e2-4fae-8f50-80fc057d8e73" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/CustomPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projekt/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projekt/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projekt/com/company/Panel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projekt/com/company/Panel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projekt/com/company/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projekt/com/company/Panel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projekt/com/company/Path.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projekt/com/company/Path.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projekt/com/company/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projekt/com/company/Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Panel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Panel.form" afterDir="false" />
-    </list>
+    <list default="true" id="e6e4526e-58e2-4fae-8f50-80fc057d8e73" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,10 +76,11 @@
     </state>
     <state x="544" y="132" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1607282581440" />
     <state x="2685" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607277409511" />
-    <state x="531" y="254" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1607281660334">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="2666" y="363" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1607283760743">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="531" y="254" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1607281660334" />
+    <state x="2666" y="363" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607283760743" />
     <state x="2754" y="407" key="#com.intellij.uiDesigner.palette.ComponentItemDialog.OneOff" timestamp="1607278725077">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
