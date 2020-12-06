@@ -1,12 +1,24 @@
 package com.company;
 
-import java.sql.SQLOutput;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    GUI window = new GUI();
+                    window.getFrame().setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
 	//tworzymy liste do szaflowania
         int numberOfPoints = 5;
         int numberOfCombinations = 10;
