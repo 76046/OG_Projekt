@@ -54,3 +54,7 @@ public class Main {
 
     }
 }
+
+
+// zrobic cos do wypisywania sciezki 1-2
+// 

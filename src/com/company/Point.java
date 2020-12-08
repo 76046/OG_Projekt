@@ -32,7 +32,8 @@ public class Point {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Point "+namePoint+" (X " + coordinateX + ",Y " + coordinateY + ")";
     }
 
