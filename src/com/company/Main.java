@@ -19,8 +19,8 @@ public class Main {
             }
         });
 
-	//tworzymy liste do szaflowania
-        int numberOfPoints = 5;
+        //tworzymy liste do szaflowania
+        int numberOfPoints = 10;
         int numberOfCombinations = 10;
         Path mainPathOfPoints = new Path();
         ArrayList<Path> listOfPath = new ArrayList<Path>();
@@ -39,12 +39,18 @@ public class Main {
             }
             listOfPath.add(newPath);
             newPath.countPathValue();
-            System.out.println(newPath);
         }
 
         for(int i = 0 ; i<listOfPath.size();i++){
             System.out.println(i+" "+listOfPath.get(i));
         }
+
+        ArrayList<Path> listAfterSelection = Selection.rankingMethod(listOfPath);
+
+        for(int i = 0 ; i<listAfterSelection.size();i++){
+            System.out.println(i+" "+listAfterSelection.get(i));
+        }
+
 
 
 
