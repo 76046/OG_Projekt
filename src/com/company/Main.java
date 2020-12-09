@@ -45,15 +45,14 @@ public class Main {
             System.out.println(i+" "+listOfPath.get(i));
         }
 
-        ArrayList<Path> listAfterSelection = Selection.rankingMethod(listOfPath);
+        //ArrayList<Path> listAfterSelection = Selection.rankingMethod(listOfPath);
+
+
+        ArrayList<Path> listAfterSelection = Mutation.inversion(listOfPath,0.2,false);
 
         for(int i = 0 ; i<listAfterSelection.size();i++){
             System.out.println(i+" "+listAfterSelection.get(i));
         }
-
-
-
-
 
 
 
