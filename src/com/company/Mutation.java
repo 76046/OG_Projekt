@@ -11,6 +11,9 @@ public class Mutation {
         ArrayList<Path> finalListOfMutation = new ArrayList<>();
 
         finalListOfMutation.addAll(listOfPath);
+//        for(int i=0;i <listOfPath.size();i++){
+//            finalListOfMutation.add(listOfPath.get(i));
+//        }
 
         int size = listOfPath.size();
         int lenghtPath = listOfPath.get(0).getPathWay().size();
@@ -56,22 +59,26 @@ public class Mutation {
                     System.out.println(randomIndex1);
                     System.out.println(randomIndex2);
                     Path addNewPath = finalListOfMutation.get(i);
-                    System.out.println(addNewPath);
-                    pointSwap1 = addNewPath.getPathWay().get(randomIndex1);
-                    pointSwap2 = addNewPath.getPathWay().get(randomIndex2);
+                    Path addNewPath2 = new Path();
+                    for(int j = 0; j < addNewPath.getPathWay().size();j++){
+                        addNewPath2.addPoint(new Point( addNewPath.pathWay.get(j).getCoordinateX(),
+                                                        addNewPath.pathWay.get(j).getCoordinateY(),
+                                                        addNewPath.pathWay.get(j).getNamePoint()));
+                    }
+                    System.out.println(addNewPath2);
+                    pointSwap1 = addNewPath2.getPathWay().get(randomIndex1);
+                    pointSwap2 = addNewPath2.getPathWay().get(randomIndex2);
                     System.out.println(pointSwap1);
                     System.out.println(pointSwap2);
-                    addNewPath.getPathWay().set(randomIndex1,pointSwap2);
-                    addNewPath.getPathWay().set(randomIndex2,pointSwap1);
-                    System.out.println(addNewPath);
-                    finalListOfMutation.add(addNewPath);
+                    addNewPath2.getPathWay().set(randomIndex1,pointSwap2);
+                    addNewPath2.getPathWay().set(randomIndex2,pointSwap1);
+                    System.out.println(addNewPath2);
+                    finalListOfMutation.add(addNewPath2);
                     System.out.println("==========================================");
                 }
             }
             return finalListOfMutation;
         }
-
-
     }
 
     public static ArrayList<Path> inversion(ArrayList<Path> listOfPath,double probability,boolean isTrivial) {

@@ -18,6 +18,7 @@ public class Path {
         pathWay.add(newPoint);
     }
 
+
     public double countPathValue(){
         double sum = 0;
         for(int i = 0;i<pathWay.size()-1;i++){

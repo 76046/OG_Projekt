@@ -19,6 +19,18 @@ public class Point {
         return namePoint;
     }
 
+    public void setCoordinateX(int coordinateX) {
+        this.coordinateX = coordinateX;
+    }
+
+    public void setCoordinateY(int coordinateY) {
+        this.coordinateY = coordinateY;
+    }
+
+    public void setNamePoint(int namePoint) {
+        this.namePoint = namePoint;
+    }
+
     Point(int namePoint){
         this.namePoint = namePoint;
         coordinateX = new Random().nextInt(100)-50;

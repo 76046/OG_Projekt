@@ -40,7 +40,6 @@ public class Selection {
     public static ArrayList<Path> rankingMethod(ArrayList<Path> listOfPath) {
         int size = listOfPath.size();
         Random random = new Random();
-        int sizeOfGroup = random.nextInt(size-2)+2;
         comparator newComparator = new comparator();
 
         ArrayList<Path> finalListOfSelection = new ArrayList<>();
