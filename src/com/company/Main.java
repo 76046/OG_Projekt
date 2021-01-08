@@ -21,7 +21,7 @@ public class Main {
 
         //tworzymy liste do szaflowania
         int numberOfPoints = 10;
-        int numberOfCombinations = 10;
+        int numberOfCombinations = 4;
         Path mainPathOfPoints = new Path();
         ArrayList<Path> listOfPath = new ArrayList<Path>();
         //tworzenie punktow
@@ -44,14 +44,17 @@ public class Main {
         for(int i = 0 ; i<listOfPath.size();i++){
             System.out.println(i+" "+listOfPath.get(i));
         }
-        ArrayList<Path> listAfterMutation = Mutation.mutation(listOfPath,0.9,false);
+        //ArrayList<Path> listAfterMutation = Mutation.mutation(listOfPath,0.9,false);
         //ArrayList<Path> listAfterSelection = Selection.rankingMethod(listOfPath);
 
-        for(int i = 0 ; i<listAfterMutation.size();i++){
-            System.out.println(i+" "+listAfterMutation.get(i));
-        }
+//        for(int i = 0 ; i<listAfterMutation.size();i++){
+//            System.out.println(i+" "+listAfterMutation.get(i));
+//        }
 
-        Crossing.PMX(listOfPath,0.2,false);
+        ArrayList<Path> listAfterCrossing = Crossing.PMX(listOfPath,0.9,false);
+        for(int i = 0 ; i<listAfterCrossing.size();i++){
+            System.out.println(i+" "+listAfterCrossing.get(i).NumbersOfPath());
+        }
 
 
 

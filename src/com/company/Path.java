@@ -35,6 +35,14 @@ public class Path {
         return sum;
     }
 
+    public String NumbersOfPath(){
+        String result = "";
+        for(int i = 0;i<pathWay.size();i++){
+                result += pathWay.get(i).getNamePoint()+" , ";
+        }
+        return result;
+    }
+
     @Override
     public String toString() {
         String result = "";
