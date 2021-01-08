@@ -31,8 +31,13 @@ public class Crossing {
         }
 
         for(int i =0;i<listOfRandomIndex.size();i+=2){
-            children.add(functionPMX(listOfPath.get(i),listOfPath.get(i+1)));
-            children.add(functionPMX(listOfPath.get(i+1),listOfPath.get(i)));
+            try{
+                children.add(functionPMX(listOfPath.get(listOfRandomIndex.get(i)),listOfPath.get(listOfRandomIndex.get(i+1))));
+                children.add(functionPMX(listOfPath.get(listOfRandomIndex.get(i+1)),listOfPath.get(listOfRandomIndex.get(i))));
+            }catch (Exception e){
+                System.out.println(e);
+            }
+
         }
 
         if(isTrivial){
@@ -49,19 +54,41 @@ public class Crossing {
         return finalListOfCrossing;
 
     }
-    public static Path functionPMX(Path pathOne, Path pathTwo){
+    public static Path functionPMX(Path pathOne, Path pathTwo) throws InterruptedException {
         Random random = new Random();
-        int randomIndex1=0, randomIndex2=0;
-        while(randomIndex1==randomIndex2 || randomIndex2<randomIndex1){
-            randomIndex1 = random.nextInt(pathOne.getPathWay().size());
-            randomIndex2 = random.nextInt(pathOne.getPathWay().size());
+
+
+
+        System.out.println("P1");
+        for(int i = 0 ; i<pathOne.getPathWay().size();i++){
+            System.out.print(", "+pathOne.getPathWay().get(i).getNamePoint());
         }
+        System.out.println("\n");
+        System.out.println("P2");
+        for(int i = 0 ; i<pathOne.getPathWay().size();i++){
+            System.out.print(", "+pathTwo.getPathWay().get(i).getNamePoint());
+        }
+        System.out.println("\n");
+
+
+
+
+
+
+
+
+
+        int randomIndex1=2, randomIndex2=5;
+//        while(randomIndex1==randomIndex2 || randomIndex2<randomIndex1){
+//            randomIndex1 = random.nextInt(pathOne.getPathWay().size());
+//            randomIndex2 = random.nextInt(pathOne.getPathWay().size());
+//        }
         System.out.println("Przedzial A " +randomIndex1);
         System.out.println("Przedzial B " +randomIndex2);
 
         Path child = new Path();
         for(int i = 0;i<pathOne.getPathWay().size();i++) {
-            child.addPoint(new Point(0,0,0));
+            child.addPoint(new Point(0,0,100));
         }
         ArrayList<Integer> selectedSection = new ArrayList<>();
         for(int i = randomIndex1;i<=randomIndex2;i++) {
@@ -95,10 +122,21 @@ public class Crossing {
                         System.out.print(", "+child.getPathWay().get(k).getNamePoint());
                     }
                     System.out.println("\n");
+                    System.out.println("P1");
+                    for(int k = 0 ; k<pathOne.getPathWay().size();k++){
+                        System.out.print(", "+pathOne.getPathWay().get(i).getNamePoint());
+                    }
+                    System.out.println("\n");
+                    System.out.println("P2");
+                    for(int k = 0 ; k<pathOne.getPathWay().size();k++){
+                        System.out.print(", "+pathTwo.getPathWay().get(i).getNamePoint());
+                    }
+                    System.out.println("\n");
                     int indexOfRepeatedElement = 0;
                     int getNamePoint = pathTwo.getPathWay().get(i).getNamePoint();
                     boolean condition = true;
                     while(condition){
+                        //Thread.sleep(2000);
                         for(int j = 0; j < child.getPathWay().size(); j++) {
                             System.out.println("getNamePoint "+ getNamePoint);
                             System.out.println("child.getPathWay().get(j).getNamePoint() "+ child.getPathWay().get(j).getNamePoint());
@@ -109,11 +147,11 @@ public class Crossing {
                                 System.out.println("j "+ j);
                                 getNamePoint = pathTwo.getPathWay().get(indexOfRepeatedElement).getNamePoint();
                                 condition = true;
+                                break;
                             }else{
                                 condition = false;
                             }
                         }
-
                     }
 
                     for(int k =0;k<pathTwo.getPathWay().size();k++){
