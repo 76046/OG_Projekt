@@ -14,6 +14,19 @@ public class Mutation {
 //        for(int i=0;i <listOfPath.size();i++){
 //            finalListOfMutation.add(listOfPath.get(i));
 //        }
+        ArrayList<Path> finalListOfMutation2 = new ArrayList<>();
+        for(int j = 0; j < finalListOfMutation.size();j++){
+            Path newPath = new Path();
+            for(int k = 0; k < finalListOfMutation.get(j).getPathWay().size();k++){
+                newPath.addPoint(new Point( finalListOfMutation.get(j).getPathWay().get(k).getCoordinateX(),
+                        finalListOfMutation.get(j).getPathWay().get(k).getCoordinateY(),
+                        finalListOfMutation.get(j).getPathWay().get(k).getNamePoint()));
+            }
+            finalListOfMutation2.add(newPath);
+        }
+
+
+
 
         int size = listOfPath.size();
         int lenghtPath = listOfPath.get(0).getPathWay().size();
@@ -25,24 +38,28 @@ public class Mutation {
                     int randomIndex1=0, randomIndex2=0;
                     Point pointSwap1, pointSwap2,tempPoint;
                     System.out.println("==========================================");
+                    System.out.println(i+" ind");
                     while(randomIndex1==randomIndex2){
                         randomIndex1 = random.nextInt(lenghtPath);
                         randomIndex2 = random.nextInt(lenghtPath);
                     }
+
+
+                    
                     System.out.println(randomIndex1);
                     System.out.println(randomIndex2);
-                    System.out.println(finalListOfMutation.get(i));
-                    pointSwap1 = finalListOfMutation.get(i).getPathWay().get(randomIndex1);
-                    pointSwap2 = finalListOfMutation.get(i).getPathWay().get(randomIndex2);
+                    System.out.println(finalListOfMutation2.get(i));
+                    pointSwap1 = finalListOfMutation2.get(i).getPathWay().get(randomIndex1);
+                    pointSwap2 = finalListOfMutation2.get(i).getPathWay().get(randomIndex2);
                     System.out.println(pointSwap1);
                     System.out.println(pointSwap2);
-                    finalListOfMutation.get(i).getPathWay().set(randomIndex1,pointSwap2);
-                    finalListOfMutation.get(i).getPathWay().set(randomIndex2,pointSwap1);
-                    System.out.println(finalListOfMutation.get(i));
+                    finalListOfMutation2.get(i).getPathWay().set(randomIndex1,pointSwap2);
+                    finalListOfMutation2.get(i).getPathWay().set(randomIndex2,pointSwap1);
+                    System.out.println(finalListOfMutation2.get(i));
                     System.out.println("==========================================");
                 }
             }
-            return finalListOfMutation;
+            return finalListOfMutation2;
         }
         else
         {
@@ -52,6 +69,7 @@ public class Mutation {
                     int randomIndex1=0, randomIndex2=0;
                     Point pointSwap1, pointSwap2,tempPoint;
                     System.out.println("==========================================");
+                    System.out.println(i+" ind");
                     while(randomIndex1==randomIndex2) {
                         randomIndex1 = random.nextInt(lenghtPath);
                         randomIndex2 = random.nextInt(lenghtPath);

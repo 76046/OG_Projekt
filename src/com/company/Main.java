@@ -24,13 +24,13 @@ public class Main {
         int numberOfPoints = 10;
         int numberOfCombinations = 10;
         int numberOfEpochs = 1;
-        String typeOfSelection = "tournament";  //"tournament" "ranking" "roulette"
+        String typeOfSelection = "roulette";  //"tournament" "ranking" "roulette"
         String typeOfSuccession = "trivial";  //"trivial" "elite" "random" "with a squeeze"
         String typeOfCrossing = "PMX";  //"PMX" "OX"
         boolean ifTrival = true;
-        double probabilityOfMutation = 0.2;
-        double probabilityOfInversion = 0.2;
-        double probabilityOfCrossing = 0.2;
+        double probabilityOfMutation = 0.5;
+        double probabilityOfInversion = 0.5;
+        double probabilityOfCrossing = 0.5;
 
 
         Path mainPathOfPoints = new Path();
@@ -52,10 +52,9 @@ public class Main {
             newPath.countPathValue();
         }
 
-        for(int i = 0 ; i<listOfPath.size();i++){
-            System.out.println(i+") "+listOfPath.get(i));
-            System.out.println(i+") "+listOfPath.get(i).NumbersOfPath());
-        }
+        System.out.println("unsubscribing");
+        unsubscribing(listOfPath);
+
         ArrayList<Path> listEpoch = new ArrayList<>(listOfPath);
         for(int epoch=0;epoch < numberOfEpochs; epoch++){
 
@@ -72,13 +71,18 @@ public class Main {
                     listEpoch = Selection.rouletteMethod(listEpoch);
                     break;
             }
+            unsubscribing(listEpoch);
             System.out.println("Mutation");
             listEpoch = Mutation.mutation(listEpoch,probabilityOfMutation,ifTrival);
+            unsubscribing(listEpoch);
+            System.out.println("Inversion");
             listEpoch = Mutation.inversion(listEpoch,probabilityOfInversion,ifTrival);
+            unsubscribing(listEpoch);
             System.out.println("Crossing");
             switch (typeOfCrossing)
             {
                 case "OX":
+                    unsubscribing(listEpoch);
                     listEpoch = Crossing.OX(listEpoch,probabilityOfCrossing,ifTrival);
                     break;
                 case "PMX":
@@ -90,7 +94,7 @@ public class Main {
             Selection.comparator comparator = new Selection.comparator();
             Collections.sort(listEpoch,comparator);
             System.out.println("unsubscribing");
-            unsubscribing(listOfPath);
+            unsubscribing(listEpoch);
             switch (typeOfSuccession)
             {
                 case "trivial":

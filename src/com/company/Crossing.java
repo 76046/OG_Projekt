@@ -44,7 +44,13 @@ public class Crossing {
             for(int i = 0;i<finalListOfCrossing.size();i++){
                 for(int j =0; j<listOfRandomIndex.size();j++){
                     if(i == listOfRandomIndex.get(j)){
-                        finalListOfCrossing.set(listOfRandomIndex.get(j),children.get(listOfRandomIndex.get(j)));
+//                        System.out.println(finalListOfCrossing.size());
+//                        System.out.println(i);
+//                        System.out.println(j);
+//                        System.out.println(listOfRandomIndex.get(j));
+                        //System.out.println(children.get(listOfRandomIndex.get(j)));
+                        //finalListOfCrossing.set(listOfRandomIndex.get(j),children.get(listOfRandomIndex.get(j)));
+                        finalListOfCrossing.set(listOfRandomIndex.get(j),children.get(j));
                     }
                 }
             }
@@ -104,7 +110,7 @@ public class Crossing {
         System.out.println("\n");
 
         for(int i = 0;i<pathOne.getPathWay().size();i++) {
-            if(!(i<=randomIndex1)){
+            if(!(i>=randomIndex1&&i<=randomIndex2)){
                 if(selectedSection.contains(pathTwo.getPathWay().get(i).getNamePoint())){
                     System.out.println("\n Problem");
                     System.out.println("PC");
@@ -114,12 +120,12 @@ public class Crossing {
                     System.out.println("\n");
                     System.out.println("P1");
                     for(int k = 0 ; k<pathOne.getPathWay().size();k++){
-                        System.out.print(", "+pathOne.getPathWay().get(i).getNamePoint());
+                        System.out.print(", "+pathOne.getPathWay().get(k).getNamePoint());
                     }
                     System.out.println("\n");
                     System.out.println("P2");
                     for(int k = 0 ; k<pathOne.getPathWay().size();k++){
-                        System.out.print(", "+pathTwo.getPathWay().get(i).getNamePoint());
+                        System.out.print(", "+pathTwo.getPathWay().get(k).getNamePoint());
                     }
                     System.out.println("\n");
                     int indexOfRepeatedElement = 0;
@@ -187,12 +193,23 @@ public class Crossing {
         }
 
         for(int i =0;i<listOfRandomIndex.size();i+=2){
-            try{
+            System.out.println();
+                System.out.println(listOfRandomIndex.get(i));
+                System.out.println(listOfRandomIndex.get(i+1));
+
+            for(int j = 0 ; j<listOfPath.size();j++){
+                System.out.println(j+" "+listOfPath.get(j).NumbersOfPath());
+                System.out.println(j+" "+listOfPath.get(j));
+            }
+            System.out.println("=================");
+            for(int j = 0 ; j<finalListOfCrossing.size();j++){
+                System.out.println(j+" "+finalListOfCrossing.get(j).NumbersOfPath());
+                System.out.println(j+" "+finalListOfCrossing.get(j));
+            }
+
                 children.add(functionOX(listOfPath.get(listOfRandomIndex.get(i)),listOfPath.get(listOfRandomIndex.get(i+1))));
                 children.add(functionOX(listOfPath.get(listOfRandomIndex.get(i+1)),listOfPath.get(listOfRandomIndex.get(i))));
-            }catch (Exception e){
-                System.out.println(e);
-            }
+
 
         }
 
@@ -200,7 +217,14 @@ public class Crossing {
             for(int i = 0;i<finalListOfCrossing.size();i++){
                 for(int j =0; j<listOfRandomIndex.size();j++){
                     if(i == listOfRandomIndex.get(j)){
-                        finalListOfCrossing.set(listOfRandomIndex.get(j),children.get(listOfRandomIndex.get(j)));
+//                        System.out.println(finalListOfCrossing.size());
+//                        System.out.println(children.size());
+//                        System.out.println(i);
+//                        System.out.println(j);
+//                        System.out.println(listOfRandomIndex.get(j));
+                        //System.out.println(children.get(listOfRandomIndex.get(j)));
+                        //finalListOfCrossing.set(listOfRandomIndex.get(j),children.get(listOfRandomIndex.get(j)));
+                        finalListOfCrossing.set(listOfRandomIndex.get(j),children.get(j));
                     }
                 }
             }
@@ -209,7 +233,7 @@ public class Crossing {
         }
         return finalListOfCrossing;
     }
-    public static Path functionOX(Path pathOne, Path pathTwo) throws InterruptedException {
+    public static Path functionOX(Path pathOne, Path pathTwo){
         Random random = new Random();
 
         System.out.println("P1");
