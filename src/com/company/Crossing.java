@@ -57,8 +57,6 @@ public class Crossing {
     public static Path functionPMX(Path pathOne, Path pathTwo) throws InterruptedException {
         Random random = new Random();
 
-
-
         System.out.println("P1");
         for(int i = 0 ; i<pathOne.getPathWay().size();i++){
             System.out.print(", "+pathOne.getPathWay().get(i).getNamePoint());
@@ -70,19 +68,11 @@ public class Crossing {
         }
         System.out.println("\n");
 
-
-
-
-
-
-
-
-
-        int randomIndex1=2, randomIndex2=5;
-//        while(randomIndex1==randomIndex2 || randomIndex2<randomIndex1){
-//            randomIndex1 = random.nextInt(pathOne.getPathWay().size());
-//            randomIndex2 = random.nextInt(pathOne.getPathWay().size());
-//        }
+        int randomIndex1=0, randomIndex2=0;
+        while(randomIndex1==randomIndex2 || randomIndex2<randomIndex1){
+            randomIndex1 = random.nextInt(pathOne.getPathWay().size());
+            randomIndex2 = random.nextInt(pathOne.getPathWay().size());
+        }
         System.out.println("Przedzial A " +randomIndex1);
         System.out.println("Przedzial B " +randomIndex2);
 
@@ -114,7 +104,7 @@ public class Crossing {
         System.out.println("\n");
 
         for(int i = 0;i<pathOne.getPathWay().size();i++) {
-            if(!(i>=randomIndex1 && i<=randomIndex2)){
+            if(!(i<=randomIndex1)){
                 if(selectedSection.contains(pathTwo.getPathWay().get(i).getNamePoint())){
                     System.out.println("\n Problem");
                     System.out.println("PC");
@@ -157,22 +147,106 @@ public class Crossing {
                     for(int k =0;k<pathTwo.getPathWay().size();k++){
                         if(getNamePoint == pathTwo.getPathWay().get(k).getNamePoint()){
                             child.getPathWay().get(i).setNamePoint(getNamePoint);
-                            child.getPathWay().get(i).setCoordinateY(pathTwo.getPathWay().get(i).getCoordinateY());
-                            child.getPathWay().get(i).setCoordinateX(pathTwo.getPathWay().get(i).getCoordinateX());
+                            child.getPathWay().get(i).setCoordinateY(pathTwo.getPathWay().get(k).getCoordinateY());
+                            child.getPathWay().get(i).setCoordinateX(pathTwo.getPathWay().get(k).getCoordinateX());
                             break;
                         }
                     }
-
                 }else{
                     child.getPathWay().get(i).setNamePoint(pathTwo.getPathWay().get(i).getNamePoint());
                     child.getPathWay().get(i).setCoordinateY(pathTwo.getPathWay().get(i).getCoordinateY());
                     child.getPathWay().get(i).setCoordinateX(pathTwo.getPathWay().get(i).getCoordinateX());
                 }
             }
-
         }
         return child;
-
     }
 
+    public static ArrayList<Path> OX(ArrayList<Path> listOfPath,double probability,boolean isTrivial){
+        Random random = new Random();
+        int size = listOfPath.size();
+        ArrayList<Integer> listOfRandomIndex = new ArrayList<>();
+        ArrayList<Path> children = new ArrayList<>();
+        ArrayList<Path> finalListOfCrossing = new ArrayList<>();
+        finalListOfCrossing.addAll(listOfPath);
+
+        for(int i = 0;i<size;i++){
+            double randomizedProbabilities = random.nextDouble();
+            if(probability>randomizedProbabilities){
+                listOfRandomIndex.add(i);
+            }
+
+        }
+        if(listOfRandomIndex.size()%2!=0){
+            listOfRandomIndex.remove(random.nextInt(listOfRandomIndex.size()));
+        }
+        Collections.shuffle(listOfRandomIndex);
+
+        for(int i = 0;i<listOfRandomIndex.size();i++){
+            System.out.println(listOfRandomIndex.get(i));
+        }
+
+        for(int i =0;i<listOfRandomIndex.size();i+=2){
+            try{
+                children.add(functionOX(listOfPath.get(listOfRandomIndex.get(i)),listOfPath.get(listOfRandomIndex.get(i+1))));
+                children.add(functionOX(listOfPath.get(listOfRandomIndex.get(i+1)),listOfPath.get(listOfRandomIndex.get(i))));
+            }catch (Exception e){
+                System.out.println(e);
+            }
+
+        }
+
+        if(isTrivial){
+            for(int i = 0;i<finalListOfCrossing.size();i++){
+                for(int j =0; j<listOfRandomIndex.size();j++){
+                    if(i == listOfRandomIndex.get(j)){
+                        finalListOfCrossing.set(listOfRandomIndex.get(j),children.get(listOfRandomIndex.get(j)));
+                    }
+                }
+            }
+        }else{
+            finalListOfCrossing.addAll(children);
+        }
+        return finalListOfCrossing;
+    }
+    public static Path functionOX(Path pathOne, Path pathTwo) throws InterruptedException {
+        Random random = new Random();
+
+        System.out.println("P1");
+        for(int i = 0 ; i<pathOne.getPathWay().size();i++){
+            System.out.print(", "+pathOne.getPathWay().get(i).getNamePoint());
+        }
+        System.out.println("\n");
+        System.out.println("P2");
+        for(int i = 0 ; i<pathOne.getPathWay().size();i++){
+            System.out.print(", "+pathTwo.getPathWay().get(i).getNamePoint());
+        }
+        System.out.println("\n");
+
+        int randomIndex1 = random.nextInt((int)(pathOne.getPathWay().size()/2))+(pathOne.getPathWay().size()/4);
+
+        System.out.println("Srodeczek " +randomIndex1);
+
+        Path child = new Path();
+        for(int i = 0;i<pathOne.getPathWay().size();i++) {
+            child.addPoint(new Point(0,0,100));
+        }
+        ArrayList<Integer> selectedSection = new ArrayList<>();
+        for(int i = 0;i<=randomIndex1;i++) {
+            selectedSection.add(pathOne.getPathWay().get(i).getNamePoint());
+            child.getPathWay().get(i).setNamePoint(pathOne.getPathWay().get(i).getNamePoint());
+            child.getPathWay().get(i).setCoordinateY(pathOne.getPathWay().get(i).getCoordinateY());
+            child.getPathWay().get(i).setCoordinateX(pathOne.getPathWay().get(i).getCoordinateX());
+        }
+        randomIndex1++;
+        for(int i = 0;i<pathOne.getPathWay().size();i++) {
+                if(!selectedSection.contains(pathTwo.getPathWay().get(i).getNamePoint())){
+                    child.getPathWay().get(randomIndex1).setNamePoint(pathTwo.getPathWay().get(i).getNamePoint());
+                    child.getPathWay().get(randomIndex1).setCoordinateY(pathTwo.getPathWay().get(i).getCoordinateY());
+                    child.getPathWay().get(randomIndex1).setCoordinateX(pathTwo.getPathWay().get(i).getCoordinateX());
+                    randomIndex1++;
+                }
+        }
+        return child;
+    }
 }

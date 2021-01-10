@@ -40,6 +40,7 @@ public class Path {
         for(int i = 0;i<pathWay.size();i++){
                 result += pathWay.get(i).getNamePoint()+" , ";
         }
+        //result += "\n";
         return result;
     }
 

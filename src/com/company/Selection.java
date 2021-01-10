@@ -5,6 +5,7 @@ import java.util.*;
 public class Selection {
     public static ArrayList<Path> tournamentMethod(ArrayList<Path> listOfPath) {
 
+        System.out.println("tournamentMethod");
         int size = listOfPath.size();
         Random random = new Random();
         int sizeOfGroup = random.nextInt(size-2)+2;
@@ -38,6 +39,7 @@ public class Selection {
     }
 
     public static ArrayList<Path> rankingMethod(ArrayList<Path> listOfPath) {
+        System.out.println("rankingMethod");
         int size = listOfPath.size();
         Random random = new Random();
         comparator newComparator = new comparator();
@@ -52,6 +54,7 @@ public class Selection {
     }
 
     public static ArrayList<Path> rouletteMethod(ArrayList<Path> listOfPath) {
+        System.out.println("rouletteMethod");
         ArrayList<Path> finalListOfSelection = new ArrayList<>();
         Random random = new Random();
 
