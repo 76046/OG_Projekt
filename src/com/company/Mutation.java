@@ -25,9 +25,6 @@ public class Mutation {
             finalListOfMutation2.add(newPath);
         }
 
-
-
-
         int size = listOfPath.size();
         int lenghtPath = listOfPath.get(0).getPathWay().size();
 

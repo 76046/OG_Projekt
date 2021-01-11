@@ -10,6 +10,10 @@ public class Path {
         return scorePath;
     }
 
+    public void setScorePath(double scorePath) {
+        this.scorePath = scorePath;
+    }
+
     public ArrayList<Point> getPathWay() {
         return pathWay;
     }

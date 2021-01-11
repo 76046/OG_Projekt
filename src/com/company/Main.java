@@ -23,14 +23,19 @@ public class Main {
         //tworzymy liste do szaflowania
         int numberOfPoints = 10;
         int numberOfCombinations = 10;
-        int numberOfEpochs = 1;
+        int numberOfEpochs = 10;
         String typeOfSelection = "roulette";  //"tournament" "ranking" "roulette"
-        String typeOfSuccession = "trivial";  //"trivial" "elite" "random" "with a squeeze"
-        String typeOfCrossing = "PMX";  //"PMX" "OX"
-        boolean ifTrival = true;
+        String typeOfSuccession = "with a squeeze";  //"trivial" "elite" "random" "with a squeeze"
+        String typeOfCrossing = "OX";  //"PMX" "OX"
+        boolean ifTrival;
         double probabilityOfMutation = 0.5;
         double probabilityOfInversion = 0.5;
         double probabilityOfCrossing = 0.5;
+        if(typeOfSuccession.equals("trivial")){
+            ifTrival = true;
+        }else{
+            ifTrival = false;
+        }
 
 
         Path mainPathOfPoints = new Path();
@@ -93,22 +98,24 @@ public class Main {
             calculationOfValues(listEpoch);
             Selection.comparator comparator = new Selection.comparator();
             Collections.sort(listEpoch,comparator);
-            System.out.println("unsubscribing");
+            System.out.println("unsubscribing1");
             unsubscribing(listEpoch);
             switch (typeOfSuccession)
             {
                 case "trivial":
-
                     break;
                 case "elite":
-
+                    listEpoch = Succession.eliteFunction(listEpoch,numberOfPoints);
                     break;
                 case "random":
+                    listEpoch = Succession.randomFunction(listEpoch,numberOfPoints);
                     break;
                 case "with a squeeze":
+                    listEpoch = Succession.withSqueezeFunction(listEpoch,numberOfPoints);
                     break;
             }
-
+            System.out.println("unsubscribing2");
+            unsubscribing(listEpoch);
         }
     }
 
