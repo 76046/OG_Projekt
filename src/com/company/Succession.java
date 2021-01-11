@@ -6,10 +6,10 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Succession {
-    public static ArrayList<Path> eliteFunction(ArrayList<Path> listOfPath,int numberOfPoints){
+    public static ArrayList<Path> eliteFunction(ArrayList<Path> listOfPath,int numberOfPath){
         ArrayList<Path> finalListOfSuccession = new ArrayList<>();
 
-        for(int j = 0; j < numberOfPoints;j++){
+        for(int j = 0; j < numberOfPath;j++){
             Path newPath = new Path();
             for(int k = 0; k < listOfPath.get(j).getPathWay().size();k++){
                 newPath.addPoint(new Point( listOfPath.get(j).getPathWay().get(k).getCoordinateX(),
@@ -22,11 +22,11 @@ public class Succession {
         return finalListOfSuccession;
     }
 
-    public static ArrayList<Path> randomFunction(ArrayList<Path> listOfPath,int numberOfPoints){
+    public static ArrayList<Path> randomFunction(ArrayList<Path> listOfPath,int numberOfPath){
         ArrayList<Path> finalListOfSuccession = new ArrayList<>();
         Collections.shuffle(listOfPath);
 
-        for(int j = 0; j < numberOfPoints;j++){
+        for(int j = 0; j < numberOfPath;j++){
             Path newPath = new Path();
             for(int k = 0; k < listOfPath.get(j).getPathWay().size();k++){
                 newPath.addPoint(new Point( listOfPath.get(j).getPathWay().get(k).getCoordinateX(),
@@ -39,7 +39,7 @@ public class Succession {
         return finalListOfSuccession;
     }
 
-    public static ArrayList<Path> withSqueezeFunction(ArrayList<Path> listOfPath,int numberOfPoints){
+    public static ArrayList<Path> withSqueezeFunction(ArrayList<Path> listOfPath,int numberOfPath){
         double wartoscZmniejszajaca = 0.1;
 
         int counter = 1;
@@ -54,8 +54,8 @@ public class Succession {
                 }
             }
         }
-        while(!(listOfPath.size()==numberOfPoints)) {
-            for (int i = listOfPath.size()-1; i <= 1; i--) {
+        while((listOfPath.size() > numberOfPath)) {
+            for (int i = listOfPath.size()-1; i >= 1; i--) {
                 if (((listOfPath.get(i).getScorePath() - wartoscZmniejszajaca) < listOfPath.get((i - 1)).getScorePath())
                         && (listOfPath.get((i - 1)).getScorePath() < listOfPath.get(i).getScorePath())) {
                     listOfPath.remove(i - 1);

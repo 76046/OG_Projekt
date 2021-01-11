@@ -22,11 +22,11 @@ public class Main {
 
         //tworzymy liste do szaflowania
         int numberOfPoints = 10;
-        int numberOfCombinations = 10;
+        int numberOfPath = 10;
         int numberOfEpochs = 10;
         String typeOfSelection = "roulette";  //"tournament" "ranking" "roulette"
-        String typeOfSuccession = "with a squeeze";  //"trivial" "elite" "random" "with a squeeze"
-        String typeOfCrossing = "OX";  //"PMX" "OX"
+        String typeOfSuccession = "elite";  //"trivial" "elite" "random" "with a squeeze"
+        String typeOfCrossing = "PMX";  //"PMX" "OX"
         boolean ifTrival;
         double probabilityOfMutation = 0.5;
         double probabilityOfInversion = 0.5;
@@ -45,7 +45,7 @@ public class Main {
             mainPathOfPoints.addPoint(new Point(i));
         }
         //losowanie i wpisywanie nowych sciezek
-        for(int i = 0; i < numberOfCombinations; i++){
+        for(int i = 0; i < numberOfPath; i++){
             Collections.shuffle(mainPathOfPoints.getPathWay());
             Path newPath = new Path();
             for(int j = 0; j < mainPathOfPoints.getPathWay().size();j++){
@@ -102,16 +102,14 @@ public class Main {
             unsubscribing(listEpoch);
             switch (typeOfSuccession)
             {
-                case "trivial":
-                    break;
                 case "elite":
-                    listEpoch = Succession.eliteFunction(listEpoch,numberOfPoints);
+                    listEpoch = Succession.eliteFunction(listEpoch,numberOfPath);
                     break;
                 case "random":
-                    listEpoch = Succession.randomFunction(listEpoch,numberOfPoints);
+                    listEpoch = Succession.randomFunction(listEpoch,numberOfPath);
                     break;
                 case "with a squeeze":
-                    listEpoch = Succession.withSqueezeFunction(listEpoch,numberOfPoints);
+                    listEpoch = Succession.withSqueezeFunction(listEpoch,numberOfPath);
                     break;
             }
             System.out.println("unsubscribing2");
