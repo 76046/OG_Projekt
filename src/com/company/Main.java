@@ -20,17 +20,17 @@ public class Main {
 //            }
 //        });
 
-        //tworzymy liste do szaflowania
+        //Dijkstra Algorytm Dijkstry
         int numberOfPoints = 10;
         int numberOfPath = 10;
         int numberOfEpochs = 10;
-        String typeOfSelection = "roulette";  //"tournament" "ranking" "roulette"
+        String typeOfSelection = "ranking";  //"tournament" "ranking" "roulette"
         String typeOfSuccession = "elite";  //"trivial" "elite" "random" "with a squeeze"
         String typeOfCrossing = "PMX";  //"PMX" "OX"
         boolean ifTrival;
-        double probabilityOfMutation = 0.5;
-        double probabilityOfInversion = 0.5;
-        double probabilityOfCrossing = 0.5;
+        double probabilityOfMutation = 0.2;
+        double probabilityOfInversion = 0.2;
+        double probabilityOfCrossing = 0.2;
         if(typeOfSuccession.equals("trivial")){
             ifTrival = true;
         }else{
@@ -63,6 +63,7 @@ public class Main {
         ArrayList<Path> listEpoch = new ArrayList<>(listOfPath);
         for(int epoch=0;epoch < numberOfEpochs; epoch++){
 
+            ArrayList<Path> listBeforeSelection = new ArrayList<>(listEpoch);
 
             switch (typeOfSelection)
             {
@@ -76,44 +77,59 @@ public class Main {
                     listEpoch = Selection.rouletteMethod(listEpoch);
                     break;
             }
+
+            ArrayList<Path> listBeforeMutation = new ArrayList<>(listBeforeSelection);
+
             unsubscribing(listEpoch);
             System.out.println("Mutation");
             listEpoch = Mutation.mutation(listEpoch,probabilityOfMutation,ifTrival);
             unsubscribing(listEpoch);
+
+            ArrayList<Path> listBeforeInversion = new ArrayList<>(listBeforeMutation);
+
             System.out.println("Inversion");
             listEpoch = Mutation.inversion(listEpoch,probabilityOfInversion,ifTrival);
             unsubscribing(listEpoch);
+
+            ArrayList<Path> listBeforeCrossing = new ArrayList<>(listBeforeInversion);
+
             System.out.println("Crossing");
             switch (typeOfCrossing)
             {
                 case "OX":
                     unsubscribing(listEpoch);
-                    listEpoch = Crossing.OX(listEpoch,probabilityOfCrossing,ifTrival);
+                    listEpoch = Crossing.OX(listBeforeCrossing,probabilityOfCrossing,ifTrival);
                     break;
                 case "PMX":
-                    listEpoch = Crossing.PMX(listEpoch,probabilityOfCrossing,ifTrival);
+                    listEpoch = Crossing.PMX(listBeforeCrossing,probabilityOfCrossing,ifTrival);
                     break;
             }
             System.out.println("calculationOfValues");
-            calculationOfValues(listEpoch);
+            calculationOfValues(listBeforeCrossing);
             Selection.comparator comparator = new Selection.comparator();
-            Collections.sort(listEpoch,comparator);
+            Collections.sort(listBeforeCrossing,comparator);
             System.out.println("unsubscribing1");
             unsubscribing(listEpoch);
+
+            ArrayList<Path> listBeforeSuccession = new ArrayList<>(listBeforeCrossing);
+
             switch (typeOfSuccession)
             {
                 case "elite":
-                    listEpoch = Succession.eliteFunction(listEpoch,numberOfPath);
+                    listEpoch = Succession.eliteFunction(listBeforeSuccession,numberOfPath);
                     break;
                 case "random":
-                    listEpoch = Succession.randomFunction(listEpoch,numberOfPath);
+                    listEpoch = Succession.randomFunction(listBeforeSuccession,numberOfPath);
                     break;
                 case "with a squeeze":
-                    listEpoch = Succession.withSqueezeFunction(listEpoch,numberOfPath);
+                    listEpoch = Succession.withSqueezeFunction(listBeforeSuccession,numberOfPath);
                     break;
             }
             System.out.println("unsubscribing2");
-            unsubscribing(listEpoch);
+            unsubscribing(listBeforeSuccession);
+
+
+            copyFunction(listBeforeSuccession,listEpoch,numberOfPath);
         }
     }
 
@@ -127,6 +143,13 @@ public class Main {
         for(int i = 0 ; i<listOfPath.size();i++){
             System.out.println(i+" "+listOfPath.get(i).NumbersOfPath());
             System.out.println(i+" "+listOfPath.get(i));
+        }
+    }
+
+    private static void copyFunction(ArrayList<Path> list1, ArrayList<Path> list2,int numberOfPath){
+        list2.clear();
+        for(int i = 0; i< numberOfPath;i++){
+            list2.add(list1.get(i));
         }
     }
 }

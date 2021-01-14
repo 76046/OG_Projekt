@@ -44,12 +44,7 @@ public class Crossing {
             for(int i = 0;i<finalListOfCrossing.size();i++){
                 for(int j =0; j<listOfRandomIndex.size();j++){
                     if(i == listOfRandomIndex.get(j)){
-//                        System.out.println(finalListOfCrossing.size());
-//                        System.out.println(i);
-//                        System.out.println(j);
-//                        System.out.println(listOfRandomIndex.get(j));
-                        //System.out.println(children.get(listOfRandomIndex.get(j)));
-                        //finalListOfCrossing.set(listOfRandomIndex.get(j),children.get(listOfRandomIndex.get(j)));
+//
                         finalListOfCrossing.set(listOfRandomIndex.get(j),children.get(j));
                     }
                 }
