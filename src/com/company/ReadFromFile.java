@@ -10,9 +10,7 @@ public class ReadFromFile {
     public static Path rFF(String fileToRead) throws FileNotFoundException {
         Path readingPath = new Path();
         Scanner readFile = new Scanner(new File(fileToRead));
-        int line = -1;
         while(readFile.hasNextLine()) {
-            line++;
             String text = readFile.nextLine();
             if (text.isEmpty())
                 break;
