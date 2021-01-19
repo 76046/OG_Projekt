@@ -33,11 +33,11 @@ public class Point {
 
     Point(int namePoint){
         this.namePoint = namePoint;
-        coordinateX = new Random().nextInt(100)-50;
-        coordinateY = new Random().nextInt(100)-50;
+        coordinateX = new Random().nextInt(10)-5;
+        coordinateY = new Random().nextInt(10)-5;
     }
 
-    public Point(int coordinateX, int coordinateY, int namePoint) {
+    public Point( int namePoint, int coordinateX, int coordinateY) {
         this.coordinateX = coordinateX;
         this.coordinateY = coordinateY;
         this.namePoint = namePoint;
