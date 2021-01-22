@@ -2,7 +2,6 @@ package com.company;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReadFromFile {
@@ -16,7 +15,7 @@ public class ReadFromFile {
                 break;
             System.out.println(text);
             String[] point = text.split(" ");
-            readingPath.addPoint(new Point(Integer.parseInt(point[0]),Integer.parseInt(point[1]),Integer.parseInt(point[2])));
+            readingPath.addPoint(new Point(Integer.parseInt(point[1]),Integer.parseInt(point[0]),Integer.parseInt(point[2])));
         }
         return readingPath;
     }

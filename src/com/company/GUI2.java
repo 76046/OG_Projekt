@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class GUI2 extends javax.swing.JFrame {
 
@@ -21,7 +23,7 @@ public class GUI2 extends javax.swing.JFrame {
     
     
 
-    public GUI2() {
+    public GUI2() throws IOException {
         initComponents();
     }
 
@@ -29,9 +31,10 @@ public class GUI2 extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents() throws IOException {
 
-        jPanel1 = new javax.swing.JPanel();
+        //jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new CustomPanel("MapaPolski.png");
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -42,6 +45,8 @@ public class GUI2 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        wynik1 = new javax.swing.JLabel();
+        wynik2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -77,17 +82,19 @@ public class GUI2 extends javax.swing.JFrame {
 
         jPanel2.setLayout(null);
 
-        jLabel1.setText("miast");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(50, 50, 40, 14);
+//        jLabel1.setText("miast");
+//        jPanel2.add(jLabel1);
+//        jLabel1.setBounds(50, 50, 40, 14);
 
         jLabel2.setText("ścieżek");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(140, 50, 50, 14);
+        //jLabel2.setBounds(140, 50, 50, 14);
+        jLabel2.setBounds(95, 50, 50, 14);
 
         jLabel3.setText("epok");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(230, 50, 40, 14);
+        //jLabel3.setBounds(230, 50, 40, 14);
+        jLabel3.setBounds(185, 50, 40, 14);
 
         jLabel4.setText("selekcji");
         jPanel2.add(jLabel4);
@@ -118,10 +125,11 @@ public class GUI2 extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1);
-        jTextField1.setBounds(40, 70, 57, 20);
+//        jPanel2.add(jTextField1);
+//        jTextField1.setBounds(40, 70, 57, 20);
         jPanel2.add(jTextField2);
-        jTextField2.setBounds(130, 70, 57, 20);
+        //jTextField2.setBounds(130, 70, 57, 20);
+        jTextField2.setBounds(85, 70, 57, 20);
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +137,8 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jTextField3);
-        jTextField3.setBounds(220, 70, 57, 20);
+        //jTextField3.setBounds(220, 70, 57, 20);
+        jTextField3.setBounds(175, 70, 57, 20);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PMX", "OX" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +209,8 @@ public class GUI2 extends javax.swing.JFrame {
             .addGap(0, 90, Short.MAX_VALUE)
         );
 
+
+
         getContentPane().add(jPanel3);
         jPanel3.setBounds(0, 370, 390, 90);
 
@@ -219,7 +230,7 @@ public class GUI2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt){//GEN-FIRST:event_jButton1ActionPerformed
-        numberOfPoints=Integer.parseInt(jTextField1.getText());
+        //numberOfPoints=Integer.parseInt(jTextField1.getText());
         numberOfPaths=Integer.parseInt(jTextField2.getText());
         numberOfEpochs=Integer.parseInt(jTextField3.getText());
         typeOfSelection=jComboBox1.getSelectedItem().toString();
@@ -228,11 +239,15 @@ public class GUI2 extends javax.swing.JFrame {
         probabilityOfMutation=(double) jSpinner1.getValue();
         probabilityOfCrossing=(double) jSpinner2.getValue();
         probabilityOfInversion=(double) jSpinner3.getValue();
+        ArrayList<Path> paths = new ArrayList<>();
         try {
-            Main.run(numberOfPoints,numberOfPaths,numberOfEpochs,typeOfSelection,typeOfCrossing,typeOfSuccession,probabilityOfMutation,probabilityOfCrossing,probabilityOfInversion);
+            paths = Main.run(/*numberOfPoints,*/numberOfPaths,numberOfEpochs,typeOfSelection,typeOfCrossing,typeOfSuccession,probabilityOfMutation,probabilityOfCrossing,probabilityOfInversion);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        jPanel1.setPaths(paths);
+        getContentPane().validate();
+        getContentPane().repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
    
@@ -240,40 +255,40 @@ public class GUI2 extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        
-
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-                new GUI2().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//
+//
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//
+//                new GUI2().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -292,7 +307,10 @@ public class GUI2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel wynik1;
+    private javax.swing.JLabel wynik2;
+    //private javax.swing.JPanel jPanel1;
+    private CustomPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSpinner jSpinner1;
