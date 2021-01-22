@@ -12,7 +12,7 @@ public class Main {
         GUI2 frame=new GUI2();
         frame.setVisible(true);
     }
-    public static ArrayList<Path> run(/*int nops, */int noph, int noes, String tosn, String tosc, String toc, double pom, double poi, double poc ) throws FileNotFoundException {
+    public static ArrayList<Path> run(/*int nops, */int noph, int noes, String tosn, String tosc, String toc, double pom, double poc, double poi ) throws FileNotFoundException {
         //Dijkstra Algorytm Dijkstry
         //int numberOfPoints = nops;
         int numberOfPoints;

@@ -5,6 +5,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class GUI2 extends javax.swing.JFrame {
     private void initComponents() throws IOException {
 
         //jPanel1 = new javax.swing.JPanel();
-        jPanel1 = new CustomPanel("MapaPolski.png");
+        jPanel1 = new CustomPanel("src/MapaPolski.png");
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -45,8 +46,6 @@ public class GUI2 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        wynik1 = new javax.swing.JLabel();
-        wynik2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -61,9 +60,13 @@ public class GUI2 extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 454));
+        setPreferredSize(new java.awt.Dimension(750, 570));
         getContentPane().setLayout(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -78,7 +81,7 @@ public class GUI2 extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 390, 370);
+        jPanel1.setBounds(0, 0, 390, 380);
 
         jPanel2.setLayout(null);
 
@@ -196,23 +199,26 @@ public class GUI2 extends javax.swing.JFrame {
         jButton1.setBounds(120, 380, 100, 30);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(390, 0, 360, 460);
+        jPanel2.setBounds(390, 0, 360, 420);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 90, Short.MAX_VALUE)
-        );
+        jPanel3.setLayout(null);
 
+        jLabel13.setText("Wynik 1:");
+        jPanel3.add(jLabel13);
+        jLabel13.setBounds(20, 40, 80, 14);
 
+        jLabel14.setForeground(Color.red);
+        jLabel14.setText("Wynik 2:");
+        jPanel3.add(jLabel14);
+        jLabel14.setBounds(20, 80, 60, 14);
+        jPanel3.add(jLabel15);
+        jLabel15.setBounds(70, 40, 660, 20);
+        jLabel16.setForeground(Color.red);
+        jPanel3.add(jLabel16);
+        jLabel16.setBounds(70, 80, 670, 20);
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 370, 390, 90);
+        jPanel3.setBounds(0, 420, 750, 150);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -246,6 +252,8 @@ public class GUI2 extends javax.swing.JFrame {
             e.printStackTrace();
         }
         jPanel1.setPaths(paths);
+        jLabel15.setText(paths.get(0).NumbersOfPath()+" "+paths.get(0).getScorePath());
+        jLabel16.setText(paths.get(paths.size()-1).NumbersOfPath()+" "+paths.get(paths.size()-1).getScorePath());
         getContentPane().validate();
         getContentPane().repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -299,6 +307,10 @@ public class GUI2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -307,8 +319,6 @@ public class GUI2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel wynik1;
-    private javax.swing.JLabel wynik2;
     //private javax.swing.JPanel jPanel1;
     private CustomPanel jPanel1;
     private javax.swing.JPanel jPanel2;
