@@ -19,8 +19,11 @@ public class GUI2 extends javax.swing.JFrame {
     private double probabilityOfMutation;
     private double probabilityOfCrossing;
     private double probabilityOfInversion;
-    public static int next=0;
+    public static int next = 0;
     private String fileName=null;
+    private boolean chosenPoint = false;
+    Path chosenPointsOnMap = new Path();
+    private int indexOfchosenPoints = 0;
 
     public static int getNext() {
         return next;
@@ -59,10 +62,12 @@ public class GUI2 extends javax.swing.JFrame {
         jSpinner2 = new javax.swing.JSpinner();
         jSpinner3 = new javax.swing.JSpinner();
         jLabel10 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -75,9 +80,15 @@ public class GUI2 extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(770, 570));
         getContentPane().setLayout(null);
 
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+
         jPanel1.setLayout(null);
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 390, 370);
+        jPanel1.setBounds(0, 0, 390, 390);
 
         jPanel2.setLayout(null);
 
@@ -191,6 +202,19 @@ public class GUI2 extends javax.swing.JFrame {
         jPanel2.add(jButton4);
         jButton4.setBounds(280, 10, 80, 20);
 
+        jButton5.setText("Niewyb Punkty");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton5);
+        jButton5.setBounds(250, 380, 120, 23);
+
+        jLabel1.setText("Punkty: -");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(300, 360, 70, 14);
+
         getContentPane().add(jPanel2);
         jPanel2.setBounds(390, 0, 380, 420);
 
@@ -220,7 +244,7 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(20, 380, 120, 30);
+        jButton3.setBounds(20, 390, 120, 30);
 
         jButton2.setText("NASTĘPNY");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +253,7 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(260, 380, 120, 30);
+        jButton2.setBounds(260, 390, 120, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -253,8 +277,21 @@ public class GUI2 extends javax.swing.JFrame {
         probabilityOfCrossing=(double) jSpinner2.getValue();
         probabilityOfInversion=(double) jSpinner3.getValue();
         next=0;
+
+        chosenPointsOnMap.NumbersOfPath();
+        System.out.println(chosenPointsOnMap);
         try {
-            paths = Main.run(/*numberOfPoints,*/numberOfPaths,numberOfEpochs,typeOfSelection,typeOfCrossing,typeOfSuccession,probabilityOfMutation,probabilityOfCrossing,probabilityOfInversion,fileName);
+            paths = Main.run(/*numberOfPoints,*/
+                    numberOfPaths,
+                    numberOfEpochs,
+                    typeOfSelection,
+                    typeOfCrossing,
+                    typeOfSuccession,
+                    probabilityOfMutation,
+                    probabilityOfCrossing,
+                    probabilityOfInversion,
+                    fileName,
+                    chosenPointsOnMap);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -295,6 +332,31 @@ public class GUI2 extends javax.swing.JFrame {
             fileName=null;
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {
+        if(chosenPoint){
+            chosenPointsOnMap.addPoint(new Point(indexOfchosenPoints,evt.getX()-20,evt.getY()-10));
+            jLabel1.setText("Punkty: "+indexOfchosenPoints);
+            indexOfchosenPoints++;
+        }
+    }
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+        System.out.println(chosenPoint);
+        if(chosenPoint){
+            chosenPoint = false;
+            jButton5.setText("Niewyb Punkty");
+            chosenPointsOnMap.getPathWay().clear();
+            indexOfchosenPoints = 0;
+            jLabel1.setText("Punkty: -");
+        }else{
+            chosenPoint = true;
+            jButton5.setText("Wyb Punkty");
+        }
+        getContentPane().validate();
+        getContentPane().repaint();
+
+    }
 
     /**
      * @param args the command line arguments
@@ -339,6 +401,7 @@ public class GUI2 extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -348,6 +411,7 @@ public class GUI2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -13,7 +13,7 @@ public class Main {
         frame.setVisible(true);
 
     }
-    public static ArrayList<Path> run(/*int nops, */int noph, int noes, String tosn, String tosc, String toc, double pom, double poc, double poi, String fn ) throws FileNotFoundException {
+    public static ArrayList<Path> run(/*int nops, */int noph, int noes, String tosn, String tosc, String toc, double pom, double poc, double poi, String fn, Path cPOM) throws FileNotFoundException {
         //Dijkstra Algorytm Dijkstry
         //int numberOfPoints = nops;
         int numberOfPoints;
@@ -27,6 +27,7 @@ public class Main {
         double probabilityOfInversion = poi;
         double probabilityOfCrossing = poc;
         String fileName = fn;
+        Path chosenPointsOnMap = cPOM;
 //        System.out.println(numberOfPoints);
 //        System.out.println(numberOfPath);
 //        System.out.println(numberOfEpochs);
@@ -42,26 +43,35 @@ public class Main {
             ifTrival = false;
         }
 
+
+
+
         Path mainPathOfPoints = new Path();
-        if(fn == null) {
+
+
+        if(chosenPointsOnMap.getPathWay().size()>0){
+            mainPathOfPoints = chosenPointsOnMap;
+        }else if(fn == null) {
             mainPathOfPoints = ReadFromFile.rFF("src/points.txt");
         } else {
             mainPathOfPoints = ReadFromFile.rFF(fn);
         }
+
+
         ArrayList<Path> listOfPath = new ArrayList<Path>();
 
         System.out.println(mainPathOfPoints.NumbersOfPath());
         System.out.println(mainPathOfPoints);
         //tworzenie punktow
-//        for(int i = 0;i < numberOfPoints;i++){
-//            mainPathOfPoints.addPoint(new Point(i));
-//        }
-
+        for(int i = 0;i < mainPathOfPoints.getPathWay().size();i++){
+            mainPathOfPoints.getPathWay().get(i).setNamePoint(i);
+        }
         Path FASTESTPathOfPoints = NearestNeighbor.theNearestNeighborFunction(mainPathOfPoints);
 
 
         //losowanie i wpisywanie nowych sciezek
         numberOfPoints = mainPathOfPoints.getPathWay().size();
+
         System.out.println(numberOfPoints);
         System.out.println(numberOfPath);
         System.out.println(numberOfEpochs);
