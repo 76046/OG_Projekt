@@ -1,11 +1,11 @@
 
 package com.company;
 
+import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,23 +21,27 @@ public class GUI2 extends javax.swing.JFrame {
     private double probabilityOfMutation;
     private double probabilityOfCrossing;
     private double probabilityOfInversion;
-    
-    
+    public static int next=0;
+
+    public static int getNext() {
+        return next;
+    }
+    private ArrayList<Path> paths = new ArrayList<>();
+
+
 
     public GUI2() throws IOException {
         initComponents();
     }
 
-    
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() throws IOException {
 
-        //jPanel1 = new javax.swing.JPanel();
         jPanel1 = new CustomPanel("src/MapaPolski.png");
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -46,7 +50,6 @@ public class GUI2 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -59,45 +62,32 @@ public class GUI2 extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 570));
+        setPreferredSize(new java.awt.Dimension(770, 570));
         getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
-        );
-
+        jPanel1.setLayout(null);
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 390, 380);
+        jPanel1.setBounds(0, 0, 390, 370);
 
         jPanel2.setLayout(null);
 
-//        jLabel1.setText("miast");
-//        jPanel2.add(jLabel1);
-//        jLabel1.setBounds(50, 50, 40, 14);
-
         jLabel2.setText("ścieżek");
         jPanel2.add(jLabel2);
-        //jLabel2.setBounds(140, 50, 50, 14);
-        jLabel2.setBounds(95, 50, 50, 14);
+        jLabel2.setBounds(100, 50, 50, 14);
 
         jLabel3.setText("epok");
         jPanel2.add(jLabel3);
-        //jLabel3.setBounds(230, 50, 40, 14);
-        jLabel3.setBounds(185, 50, 40, 14);
+        jLabel3.setBounds(190, 50, 40, 14);
 
         jLabel4.setText("selekcji");
         jPanel2.add(jLabel4);
@@ -122,17 +112,8 @@ public class GUI2 extends javax.swing.JFrame {
         jLabel9.setText("inwersji");
         jPanel2.add(jLabel9);
         jLabel9.setBounds(230, 320, 60, 14);
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-//        jPanel2.add(jTextField1);
-//        jTextField1.setBounds(40, 70, 57, 20);
         jPanel2.add(jTextField2);
-        //jTextField2.setBounds(130, 70, 57, 20);
-        jTextField2.setBounds(85, 70, 57, 20);
+        jTextField2.setBounds(90, 70, 57, 20);
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,8 +121,7 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jTextField3);
-        //jTextField3.setBounds(220, 70, 57, 20);
-        jTextField3.setBounds(175, 70, 57, 20);
+        jTextField3.setBounds(180, 70, 57, 20);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PMX", "OX" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -189,17 +169,26 @@ public class GUI2 extends javax.swing.JFrame {
         jLabel12.setBounds(90, 270, 170, 30);
 
         jButton1.setFont(new java.awt.Font("Stencil", 0, 11)); // NOI18N
-        jButton1.setText("START");
+        jButton1.setText("OBLICZ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(120, 380, 100, 30);
+        jButton1.setBounds(130, 380, 100, 30);
+
+        jButton4.setText("Wczytaj");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton4);
+        jButton4.setBounds(280, 10, 80, 20);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(390, 0, 360, 420);
+        jPanel2.setBounds(390, 0, 380, 420);
 
         jPanel3.setLayout(null);
 
@@ -220,16 +209,30 @@ public class GUI2 extends javax.swing.JFrame {
         getContentPane().add(jPanel3);
         jPanel3.setBounds(0, 420, 750, 150);
 
+        jButton3.setText("POPRZEDNI");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(20, 380, 120, 30);
+
+        jButton2.setText("NASTĘPNY");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(260, 380, 120, 30);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -245,20 +248,44 @@ public class GUI2 extends javax.swing.JFrame {
         probabilityOfMutation=(double) jSpinner1.getValue();
         probabilityOfCrossing=(double) jSpinner2.getValue();
         probabilityOfInversion=(double) jSpinner3.getValue();
-        ArrayList<Path> paths = new ArrayList<>();
+        next=0;
         try {
             paths = Main.run(/*numberOfPoints,*/numberOfPaths,numberOfEpochs,typeOfSelection,typeOfCrossing,typeOfSuccession,probabilityOfMutation,probabilityOfCrossing,probabilityOfInversion);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         jPanel1.setPaths(paths);
-        jLabel15.setText(paths.get(0).NumbersOfPath()+" "+paths.get(0).getScorePath());
+        jLabel15.setText(paths.get(paths.size()-1).NumbersOfPath()+" "+paths.get(paths.size()-1).getScorePath());
         jLabel16.setText(paths.get(paths.size()-1).NumbersOfPath()+" "+paths.get(paths.size()-1).getScorePath());
         getContentPane().validate();
         getContentPane().repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-   
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(next<paths.size()-1)
+        {
+            next++;
+        }
+        jLabel15.setText(paths.get(paths.size()-1-next).NumbersOfPath()+" "+paths.get(paths.size()-1-next).getScorePath());
+        getContentPane().validate();
+        getContentPane().repaint();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(next>0)
+        {
+            next--;
+        }
+        jLabel15.setText(paths.get(paths.size()-1-next).NumbersOfPath()+" "+paths.get(paths.size()-1-next).getScorePath());
+        getContentPane().validate();
+        getContentPane().repaint();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+
 
     /**
      * @param args the command line arguments
@@ -300,10 +327,12 @@ public class GUI2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -319,14 +348,15 @@ public class GUI2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    //private javax.swing.JPanel jPanel1;
+    /*
+    private javax.swing.JPanel jPanel1;
+    */
     private CustomPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables

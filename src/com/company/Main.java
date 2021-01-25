@@ -45,6 +45,9 @@ public class Main {
 //        Path mainPathOfPoints = new Path();
         Path mainPathOfPoints = ReadFromFile.rFF("src/points.txt");
         ArrayList<Path> listOfPath = new ArrayList<Path>();
+
+        System.out.println(mainPathOfPoints.NumbersOfPath());
+        System.out.println(mainPathOfPoints);
         //tworzenie punktow
 //        for(int i = 0;i < numberOfPoints;i++){
 //            mainPathOfPoints.addPoint(new Point(i));
@@ -69,9 +72,10 @@ public class Main {
             Collections.shuffle(mainPathOfPoints.getPathWay());
             Path newPath = new Path();
             for(int j = 0; j < mainPathOfPoints.getPathWay().size();j++){
-                newPath.addPoint(new Point( mainPathOfPoints.pathWay.get(j).getCoordinateX(),
-                        mainPathOfPoints.pathWay.get(j).getCoordinateY(),
-                        mainPathOfPoints.pathWay.get(j).getNamePoint()));
+                newPath.addPoint(new Point(
+                        mainPathOfPoints.pathWay.get(j).getNamePoint(),
+                        mainPathOfPoints.pathWay.get(j).getCoordinateX(),
+                        mainPathOfPoints.pathWay.get(j).getCoordinateY()));
             }
             listOfPath.add(newPath);
             newPath.countPathValue();

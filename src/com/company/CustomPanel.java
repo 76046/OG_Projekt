@@ -11,6 +11,7 @@ public class CustomPanel extends JPanel {
 
     ArrayList<Path> paths;
     private Image image;
+    private int next;
 
     public CustomPanel(String fileName) throws IOException {
         image = ImageIO.read(new File(fileName));
@@ -26,10 +27,11 @@ public class CustomPanel extends JPanel {
         g.drawImage(image, 23, 12, 370, 370, /*352, 340,*/ this);
 
         if(this.paths != null){
-            Path bestFromGeneticAlgorithm = paths.get(0);
+            next=GUI2.getNext();
+            Path fromGeneticAlgorithm = paths.get(paths.size()-1-next);
             Path bestOfAll = paths.get(paths.size()-1);
 
-            ArrayList<Point> points = bestFromGeneticAlgorithm.getPathWay();
+            ArrayList<Point> points = fromGeneticAlgorithm.getPathWay();
             ArrayList<Integer> xPoints = new ArrayList<>();
             ArrayList<Integer> yPoints = new ArrayList<>();
             // pobieranie współrzędnych punktów
@@ -41,16 +43,16 @@ public class CustomPanel extends JPanel {
             for(int i = 0; i < xPoints.size(); i++){
 //                g.drawOval((yPoints.get(i)/3)+20, (xPoints.get(i)/3)+10, 5, 5);
 //                g.drawString(String.valueOf(points.get(i).getNamePoint()), (yPoints.get(i)/3)+20, (xPoints.get(i)/3)+10);
-                g.drawOval((yPoints.get(i))+20, (xPoints.get(i))+10, 5, 5);
-                g.drawString(String.valueOf(points.get(i).getNamePoint()), (yPoints.get(i))+20, (xPoints.get(i))+10);
+                g.drawOval((xPoints.get(i))+20, (yPoints.get(i))+10, 5, 5);
+                g.drawString(String.valueOf(points.get(i).getNamePoint()), (xPoints.get(i))+20, (yPoints.get(i))+10);
             }
             //rysowanie ścieżki najlepszej z algorytmu genetycznego
             for(int i = 0; i < xPoints.size()-1; i++){
                 //g.drawLine((yPoints.get(i)/3)+20, (xPoints.get(i)/3)+10, (yPoints.get(i+1)/3)+20, (xPoints.get(i+1)/3)+10);
-                g.drawLine((yPoints.get(i))+20, (xPoints.get(i))+10, (yPoints.get(i+1))+20, (xPoints.get(i+1))+10);
+                g.drawLine((xPoints.get(i))+20, (yPoints.get(i))+10, (xPoints.get(i+1))+20, (yPoints.get(i+1))+10);
             }
             //g.drawLine((yPoints.get(xPoints.size()-1)/3)+20, (xPoints.get(xPoints.size()-1)/3)+10, (yPoints.get(0)/3)+20, (xPoints.get(0)/3)+10);
-            g.drawLine((yPoints.get(xPoints.size()-1))+20, (xPoints.get(xPoints.size()-1))+10, (yPoints.get(0))+20, (xPoints.get(0))+10);
+            g.drawLine((xPoints.get(xPoints.size()-1))+20, (yPoints.get(xPoints.size()-1))+10, (xPoints.get(0))+20, (yPoints.get(0))+10);
 
             //rysowanie najlepszej ścieżki z algorytmu najbliższego sąsiada
             g.setColor(Color.red);
@@ -66,10 +68,10 @@ public class CustomPanel extends JPanel {
 
             for(int i = 0; i < xNewCoordinates.size()-1; i++){
                 //g.drawLine((yNewCoordinates.get(i)/3)+20, (xNewCoordinates.get(i)/3)+10, (yNewCoordinates.get(i+1)/3)+20, (xNewCoordinates.get(i+1)/3)+10);
-                g.drawLine((yNewCoordinates.get(i))+20, (xNewCoordinates.get(i))+10, (yNewCoordinates.get(i+1))+20, (xNewCoordinates.get(i+1))+10);
+                g.drawLine((xNewCoordinates.get(i))+20, (yNewCoordinates.get(i))+10, (xNewCoordinates.get(i+1))+20, (yNewCoordinates.get(i+1))+10);
             }
             //g.drawLine((yNewCoordinates.get(xNewCoordinates.size()-1)/3)+20, (xNewCoordinates.get(xNewCoordinates.size()-1)/3)+10, (yNewCoordinates.get(0)/3)+20, (xNewCoordinates.get(0)/3)+10);
-            g.drawLine((yNewCoordinates.get(xNewCoordinates.size()-1))+20, (xNewCoordinates.get(xNewCoordinates.size()-1))+10, (yNewCoordinates.get(0))+20, (xNewCoordinates.get(0))+10);
+            g.drawLine((xNewCoordinates.get(xNewCoordinates.size()-1))+20, (yNewCoordinates.get(xNewCoordinates.size()-1))+10, (xNewCoordinates.get(0))+20, (yNewCoordinates.get(0))+10);
         }
     }
 }
