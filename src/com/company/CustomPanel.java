@@ -13,6 +13,8 @@ public class CustomPanel extends JPanel {
     private Image image;
     private int next;
 
+    public CustomPanel() {}
+
     public CustomPanel(String fileName) throws IOException {
         image = ImageIO.read(new File(fileName));
     }
@@ -23,6 +25,8 @@ public class CustomPanel extends JPanel {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        //g.drawImage(image,0,0,null);
 
         g.drawImage(image, 23, 12, 370, 370, /*352, 340,*/ this);
 
@@ -43,6 +47,9 @@ public class CustomPanel extends JPanel {
             for(int i = 0; i < xPoints.size(); i++){
 //                g.drawOval((yPoints.get(i)/3)+20, (xPoints.get(i)/3)+10, 5, 5);
 //                g.drawString(String.valueOf(points.get(i).getNamePoint()), (yPoints.get(i)/3)+20, (xPoints.get(i)/3)+10);
+                g.setColor(Color.WHITE);
+                g.fillOval((xPoints.get(i))+20, (yPoints.get(i))+10, 5, 5);
+                g.setColor(Color.BLACK);
                 g.drawOval((xPoints.get(i))+20, (yPoints.get(i))+10, 5, 5);
                 g.drawString(String.valueOf(points.get(i).getNamePoint()), (xPoints.get(i))+20, (yPoints.get(i))+10);
             }

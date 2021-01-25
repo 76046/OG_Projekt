@@ -1,11 +1,9 @@
 
 package com.company;
 
-import java.awt.Color;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
+import java.awt.*;
+import javax.swing.*;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,6 +20,7 @@ public class GUI2 extends javax.swing.JFrame {
     private double probabilityOfCrossing;
     private double probabilityOfInversion;
     public static int next=0;
+    private String fileName=null;
 
     public static int getNext() {
         return next;
@@ -40,7 +39,8 @@ public class GUI2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() throws IOException {
 
-        jPanel1 = new CustomPanel("src/MapaPolski.png");
+        jPanel1 = new CustomPanel("src/MapaPolski2.png");
+        //jPanel1 = new CustomPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -181,7 +181,11 @@ public class GUI2 extends javax.swing.JFrame {
         jButton4.setText("Wczytaj");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                try{
+                    jButton4ActionPerformed(evt);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         jPanel2.add(jButton4);
@@ -250,7 +254,7 @@ public class GUI2 extends javax.swing.JFrame {
         probabilityOfInversion=(double) jSpinner3.getValue();
         next=0;
         try {
-            paths = Main.run(/*numberOfPoints,*/numberOfPaths,numberOfEpochs,typeOfSelection,typeOfCrossing,typeOfSuccession,probabilityOfMutation,probabilityOfCrossing,probabilityOfInversion);
+            paths = Main.run(/*numberOfPoints,*/numberOfPaths,numberOfEpochs,typeOfSelection,typeOfCrossing,typeOfSuccession,probabilityOfMutation,probabilityOfCrossing,probabilityOfInversion,fileName);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -281,11 +285,16 @@ public class GUI2 extends javax.swing.JFrame {
         getContentPane().repaint();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            JFileChooser chooser = new JFileChooser();
+            chooser.showOpenDialog(null);
+            File f = chooser.getSelectedFile();
+            fileName = f.getAbsolutePath();
+        } catch (Exception ex) {
+            fileName=null;
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
-
-
 
     /**
      * @param args the command line arguments
