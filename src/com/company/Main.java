@@ -11,6 +11,7 @@ public class Main {
 
         GUI2 frame=new GUI2();
         frame.setVisible(true);
+
     }
     public static ArrayList<Path> run(/*int nops, */int noph, int noes, String tosn, String tosc, String toc, double pom, double poc, double poi ) throws FileNotFoundException {
         //Dijkstra Algorytm Dijkstry
@@ -49,7 +50,8 @@ public class Main {
 //            mainPathOfPoints.addPoint(new Point(i));
 //        }
 
-        //TheFastestWay.theFastestWayFunction(mainPathOfPoints);
+        Path FASTESTPathOfPoints = NearestNeighbor.theNearestNeighborFunction(mainPathOfPoints);
+
 
         //losowanie i wpisywanie nowych sciezek
         numberOfPoints = mainPathOfPoints.getPathWay().size();
@@ -150,6 +152,7 @@ public class Main {
             copyFunction(listBeforeSuccession,listEpoch,numberOfPath);
         }
 
+        listEpoch.add(FASTESTPathOfPoints);
         return listEpoch;
     }
 

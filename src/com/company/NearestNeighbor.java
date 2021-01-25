@@ -1,9 +1,10 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class TheFastestWay {
-    public static void theFastestWayFunction(Path mainPathOfPoints){
+public class NearestNeighbor {
+    public static Path theNearestNeighborFunction(Path mainPathOfPoints){
 
         double[][] individualRoads = new double[mainPathOfPoints.getPathWay().size()][mainPathOfPoints.getPathWay().size()];
         for(int i = 0; i < mainPathOfPoints.getPathWay().size(); i++){
@@ -69,12 +70,33 @@ public class TheFastestWay {
             pathAndScore[k][pickNumbers.size()] = sum;
         }
 
+        ArrayList<Path> FinalScoresOfPath = new ArrayList<Path>();
+
         for(int i = 0; i < mainPathOfPoints.getPathWay().size(); i++){
             System.out.print(i+") ");
+
+            Path newPath = new Path();
+            newPath.setScorePath(pathAndScore[i][mainPathOfPoints.getPathWay().size()]);
             for(int j = 0; j <= mainPathOfPoints.getPathWay().size(); j++){
                 System.out.print(pathAndScore[i][j] + " ");
+                for(int l = 0;l< mainPathOfPoints.getPathWay().size();l++){
+                    if(pathAndScore[i][j]==mainPathOfPoints.getPathWay().get(l).getNamePoint()){
+                        newPath.addPoint(new Point(mainPathOfPoints.getPathWay().get(l).getNamePoint(),
+                                                   mainPathOfPoints.getPathWay().get(l).getCoordinateX(),
+                                                   mainPathOfPoints.getPathWay().get(l).getCoordinateY()));
+                    }
+                }
             }
             System.out.println();
+            FinalScoresOfPath.add(newPath);
         }
+        System.out.println("------------------------------------------------------------------");
+        Selection.comparator comparator = new Selection.comparator();
+        Collections.sort(FinalScoresOfPath,comparator);
+
+        for(int i = 0; i < FinalScoresOfPath.size(); i++){
+            System.out.println(FinalScoresOfPath.get(i));
+        }
+        return FinalScoresOfPath.get(0);
     }
 }
