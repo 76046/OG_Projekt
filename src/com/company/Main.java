@@ -51,6 +51,9 @@ public class Main {
 
         if(chosenPointsOnMap.getPathWay().size()>0){
             mainPathOfPoints = chosenPointsOnMap;
+            for(int i = 0;i < mainPathOfPoints.getPathWay().size();i++){
+                mainPathOfPoints.getPathWay().get(i).setNamePoint(i);
+            }
         }else if(fn == null) {
             mainPathOfPoints = ReadFromFile.rFF("src/points.txt");
         } else {
@@ -63,9 +66,7 @@ public class Main {
         System.out.println(mainPathOfPoints.NumbersOfPath());
         System.out.println(mainPathOfPoints);
         //tworzenie punktow
-        for(int i = 0;i < mainPathOfPoints.getPathWay().size();i++){
-            mainPathOfPoints.getPathWay().get(i).setNamePoint(i);
-        }
+
         Path FASTESTPathOfPoints = NearestNeighbor.theNearestNeighborFunction(mainPathOfPoints);
 
 

@@ -76,6 +76,185 @@ public class GUI2 extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+//        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+//        setPreferredSize(new java.awt.Dimension(770, 570));
+//        getContentPane().setLayout(null);
+//
+//        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+//            public void mouseClicked(java.awt.event.MouseEvent evt) {
+//                jPanel1MouseClicked(evt);
+//            }
+//        });
+//
+//        jPanel1.setLayout(null);
+//        getContentPane().add(jPanel1);
+//        jPanel1.setBounds(0, 0, 390, 390);
+//
+//        jPanel2.setLayout(null);
+//
+//        jLabel2.setText("ścieżek");
+//        jPanel2.add(jLabel2);
+//        jLabel2.setBounds(100, 50, 50, 14);
+//
+//        jLabel3.setText("epok");
+//        jPanel2.add(jLabel3);
+//        jLabel3.setBounds(190, 50, 40, 14);
+//
+//        jLabel4.setText("selekcji");
+//        jPanel2.add(jLabel4);
+//        jLabel4.setBounds(30, 180, 60, 14);
+//
+//        jLabel5.setText("krzyżowania");
+//        jPanel2.add(jLabel5);
+//        jLabel5.setBounds(120, 180, 90, 14);
+//
+//        jLabel6.setText("sukcesji");
+//        jPanel2.add(jLabel6);
+//        jLabel6.setBounds(240, 180, 50, 14);
+//
+//        jLabel7.setText("mutacji");
+//        jPanel2.add(jLabel7);
+//        jLabel7.setBounds(50, 320, 60, 14);
+//
+//        jLabel8.setText("krzyżowania ");
+//        jPanel2.add(jLabel8);
+//        jLabel8.setBounds(130, 320, 100, 14);
+//
+//        jLabel9.setText("inwersji");
+//        jPanel2.add(jLabel9);
+//        jLabel9.setBounds(230, 320, 60, 14);
+//        jPanel2.add(jTextField2);
+//        jTextField2.setBounds(90, 70, 57, 20);
+//
+//        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jTextField3ActionPerformed(evt);
+//            }
+//        });
+//        jPanel2.add(jTextField3);
+//        jTextField3.setBounds(180, 70, 57, 20);
+//
+//        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PMX", "OX" }));
+//        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jComboBox2ActionPerformed(evt);
+//            }
+//        });
+//        jPanel2.add(jComboBox2);
+//        jComboBox2.setBounds(110, 200, 90, 20);
+//
+//        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Turniejowa", "Rankingowa", "Ruletki" }));
+//        jPanel2.add(jComboBox1);
+//        jComboBox1.setBounds(7, 200, 90, 20);
+//
+//        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trywialna", "Elitarna", "Losowa", "Ze ściskiem" }));
+//        jPanel2.add(jComboBox3);
+//        jComboBox3.setBounds(220, 200, 90, 20);
+//
+//        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.0d, 1.0d, 0.1d));
+//        jSpinner1.setOpaque(false);
+//        jPanel2.add(jSpinner1);
+//        jSpinner1.setBounds(40, 340, 60, 20);
+//
+//        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.0d, 1.0d, 0.1d));
+//        jPanel2.add(jSpinner2);
+//        jSpinner2.setBounds(130, 340, 60, 20);
+//
+//        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.0d, 1.0d, 0.1d));
+//        jPanel2.add(jSpinner3);
+//        jSpinner3.setBounds(220, 340, 60, 20);
+//
+//        jLabel10.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+//        jLabel10.setText("Liczba");
+//        jPanel2.add(jLabel10);
+//        jLabel10.setBounds(140, 10, 45, 17);
+//
+//        jLabel11.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+//        jLabel11.setText("Rodzaj");
+//        jPanel2.add(jLabel11);
+//        jLabel11.setBounds(140, 140, 50, 17);
+//
+//        jLabel12.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+//        jLabel12.setText("Prawdopodobieństwo");
+//        jPanel2.add(jLabel12);
+//        jLabel12.setBounds(90, 270, 170, 30);
+//
+//        jButton1.setFont(new java.awt.Font("Stencil", 0, 11)); // NOI18N
+//        jButton1.setText("OBLICZ");
+//        jButton1.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jButton1ActionPerformed(evt);
+//            }
+//        });
+//        jPanel2.add(jButton1);
+//        jButton1.setBounds(130, 380, 100, 30);
+//
+//        jButton4.setText("Wczytaj");
+//        jButton4.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                try{
+//                    jButton4ActionPerformed(evt);
+//                } catch (IOException ex) {
+//                    ex.printStackTrace();
+//                }
+//            }
+//        });
+//        jPanel2.add(jButton4);
+//        jButton4.setBounds(280, 10, 80, 20);
+//
+//        jButton5.setText("Niewyb Punkty");
+//        jButton5.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jButton5ActionPerformed(evt);
+//            }
+//        });
+//        jPanel2.add(jButton5);
+//        jButton5.setBounds(250, 380, 120, 23);
+//
+//        jLabel1.setText("Punkty: -");
+//        jPanel2.add(jLabel1);
+//        jLabel1.setBounds(300, 360, 70, 14);
+//
+//        getContentPane().add(jPanel2);
+//        jPanel2.setBounds(390, 0, 380, 420);
+//
+//        jPanel3.setLayout(null);
+//
+//        jLabel13.setText("Wynik 1:");
+//        jPanel3.add(jLabel13);
+//        jLabel13.setBounds(20, 40, 80, 14);
+//
+//        jLabel14.setForeground(Color.red);
+//        jLabel14.setText("Wynik 2:");
+//        jPanel3.add(jLabel14);
+//        jLabel14.setBounds(20, 80, 60, 14);
+//        jPanel3.add(jLabel15);
+//        jLabel15.setBounds(70, 40, 660, 20);
+//        jLabel16.setForeground(Color.red);
+//        jPanel3.add(jLabel16);
+//        jLabel16.setBounds(70, 80, 670, 20);
+//
+//        getContentPane().add(jPanel3);
+//        jPanel3.setBounds(0, 420, 750, 150);
+//
+//        jButton3.setText("POPRZEDNI");
+//        jButton3.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jButton3ActionPerformed(evt);
+//            }
+//        });
+//        getContentPane().add(jButton3);
+//        jButton3.setBounds(20, 390, 120, 30);
+//
+//        jButton2.setText("NASTĘPNY");
+//        jButton2.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jButton2ActionPerformed(evt);
+//            }
+//        });
+//        getContentPane().add(jButton2);
+//        jButton2.setBounds(260, 390, 120, 30);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(770, 570));
         getContentPane().setLayout(null);
@@ -94,37 +273,37 @@ public class GUI2 extends javax.swing.JFrame {
 
         jLabel2.setText("ścieżek");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(100, 50, 50, 14);
+        jLabel2.setBounds(130, 50, 50, 14);
 
         jLabel3.setText("epok");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(190, 50, 40, 14);
+        jLabel3.setBounds(220, 50, 40, 14);
 
         jLabel4.setText("selekcji");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(30, 180, 60, 14);
+        jLabel4.setBounds(70, 160, 60, 14);
 
         jLabel5.setText("krzyżowania");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(120, 180, 90, 14);
+        jLabel5.setBounds(160, 160, 90, 14);
 
         jLabel6.setText("sukcesji");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(240, 180, 50, 14);
+        jLabel6.setBounds(280, 160, 50, 14);
 
         jLabel7.setText("mutacji");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(50, 320, 60, 14);
+        jLabel7.setBounds(80, 280, 60, 14);
 
         jLabel8.setText("krzyżowania ");
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(130, 320, 100, 14);
+        jLabel8.setBounds(160, 280, 100, 14);
 
         jLabel9.setText("inwersji");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(230, 320, 60, 14);
+        jLabel9.setBounds(260, 280, 60, 14);
         jPanel2.add(jTextField2);
-        jTextField2.setBounds(90, 70, 57, 20);
+        jTextField2.setBounds(120, 70, 57, 20);
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +311,7 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jTextField3);
-        jTextField3.setBounds(180, 70, 57, 20);
+        jTextField3.setBounds(210, 70, 57, 20);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PMX", "OX" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -141,43 +320,43 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jComboBox2);
-        jComboBox2.setBounds(110, 200, 90, 20);
+        jComboBox2.setBounds(150, 180, 90, 20);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Turniejowa", "Rankingowa", "Ruletki" }));
         jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(7, 200, 90, 20);
+        jComboBox1.setBounds(50, 180, 90, 20);
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trywialna", "Elitarna", "Losowa", "Ze ściskiem" }));
         jPanel2.add(jComboBox3);
-        jComboBox3.setBounds(220, 200, 90, 20);
+        jComboBox3.setBounds(260, 180, 90, 20);
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.0d, 1.0d, 0.1d));
         jSpinner1.setOpaque(false);
         jPanel2.add(jSpinner1);
-        jSpinner1.setBounds(40, 340, 60, 20);
+        jSpinner1.setBounds(70, 300, 60, 20);
 
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.0d, 1.0d, 0.1d));
         jPanel2.add(jSpinner2);
-        jSpinner2.setBounds(130, 340, 60, 20);
+        jSpinner2.setBounds(160, 300, 60, 20);
 
         jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.0d, 1.0d, 0.1d));
         jPanel2.add(jSpinner3);
-        jSpinner3.setBounds(220, 340, 60, 20);
+        jSpinner3.setBounds(250, 300, 60, 20);
 
         jLabel10.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel10.setText("Liczba");
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(140, 10, 45, 17);
+        jLabel10.setBounds(170, 10, 45, 17);
 
         jLabel11.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel11.setText("Rodzaj");
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(140, 140, 50, 17);
+        jLabel11.setBounds(170, 120, 50, 17);
 
         jLabel12.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel12.setText("Prawdopodobieństwo");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(90, 270, 170, 30);
+        jLabel12.setBounds(120, 230, 170, 30);
 
         jButton1.setFont(new java.awt.Font("Stencil", 0, 11)); // NOI18N
         jButton1.setText("OBLICZ");
@@ -187,7 +366,7 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(130, 380, 100, 30);
+        jButton1.setBounds(140, 370, 100, 30);
 
         jButton4.setText("Wczytaj");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +379,7 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton4);
-        jButton4.setBounds(280, 10, 80, 20);
+        jButton4.setBounds(30, 370, 80, 30);
 
         jButton5.setText("Niewyb Punkty");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -208,31 +387,32 @@ public class GUI2 extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+
+        jButton5.setFont(new java.awt.Font("Century", 0, 8));
         jPanel2.add(jButton5);
-        jButton5.setBounds(250, 380, 120, 23);
+        jButton5.setBounds(260, 370, 100, 30);
+
 
         jLabel1.setText("Punkty: -");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(300, 360, 70, 14);
+        jLabel1.setBounds(280, 350, 70, 14);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(390, 0, 380, 420);
 
         jPanel3.setLayout(null);
 
-        jLabel13.setText("Wynik 1:");
+        jLabel13.setText("Wyniki :");
         jPanel3.add(jLabel13);
         jLabel13.setBounds(20, 40, 80, 14);
 
-        jLabel14.setForeground(Color.red);
-        jLabel14.setText("Wynik 2:");
+        jLabel14.setText("Naj Wynik :");
         jPanel3.add(jLabel14);
-        jLabel14.setBounds(20, 80, 60, 14);
+        jLabel14.setBounds(20, 80, 80, 14);
         jPanel3.add(jLabel15);
-        jLabel15.setBounds(70, 40, 660, 20);
-        jLabel16.setForeground(Color.red);
+        jLabel15.setBounds(90, 37, 660, 20);
         jPanel3.add(jLabel16);
-        jLabel16.setBounds(70, 80, 670, 20);
+        jLabel16.setBounds(90, 78, 670, 20);
 
         getContentPane().add(jPanel3);
         jPanel3.setBounds(0, 420, 750, 150);
@@ -253,7 +433,8 @@ public class GUI2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(260, 390, 120, 30);
+        jButton2.setBounds(270, 390, 120, 30);
+
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
