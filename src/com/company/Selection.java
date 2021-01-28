@@ -5,11 +5,14 @@ import java.util.*;
 public class Selection {
     public static ArrayList<Path> tournamentMethod(ArrayList<Path> listOfPath) {
 
-        System.out.println("tournamentMethod");
+        //System.out.println(" turna "+listOfPath.size());
+
         int size = listOfPath.size();
         Random random = new Random();
         int sizeOfGroup = random.nextInt(size-2)+2;
         comparator newConfrontation = new comparator();
+
+
 
         ArrayList<Path> finalListOfSelection = new ArrayList<>();
         for(int k = 0;k<size;k++){
@@ -33,13 +36,13 @@ public class Selection {
             } else if(row1.getScorePath() < row2.getScorePath()) {
                 return -1;
             }else{
-                return -1;
+                return 0;
             }
         }
     }
 
     public static ArrayList<Path> rankingMethod(ArrayList<Path> listOfPath) {
-        System.out.println("rankingMethod");
+        //System.out.println("rankingMethod");
         int size = listOfPath.size();
         Random random = new Random();
         comparator newComparator = new comparator();
@@ -54,7 +57,7 @@ public class Selection {
     }
 
     public static ArrayList<Path> rouletteMethod(ArrayList<Path> listOfPath) {
-        System.out.println("rouletteMethod");
+        //System.out.println("rouletteMethod");
         ArrayList<Path> finalListOfSelection = new ArrayList<>();
         Random random = new Random();
 

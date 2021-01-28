@@ -13,7 +13,7 @@ public class ReadFromFile {
             String text = readFile.nextLine();
             if (text.isEmpty())
                 break;
-            System.out.println(text);
+            //System.out.println(text);
             String[] point = text.split(" ");
             readingPath.addPoint(new Point(Integer.parseInt(point[0]),Integer.parseInt(point[1]),Integer.parseInt(point[2])));
         }
